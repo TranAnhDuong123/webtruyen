@@ -38,11 +38,39 @@ class UsersController extends AppController
             ));
             if(!empty($data)){
                 $this->Session->setFlash('Success');
-                //$this->User->delete($id);
+                $this->User->delete($id);
             }else{
                 $this->Session->setFlash('Error');
             }
             $this->redirect(array('action'=>'list'));
+        }
+    }
+    public function admin_edit($id = null){
+        if($this->request->is('post') || $this->request->is('put')){
+            //print_r($this->request->data);exit();
+            $this->User->id = $id;
+            $this->User->set(array('date_updated' => date('Y:m:d H:i:s')));
+            if($this->User->save($this->request->data)){
+                $this->Session->setFlash('Success','default',array('class'=>"alert alert-success"));
+                $this->redirect(array('action'=>'list'));
+            }
+            
+        }else{
+            $this->User->id = $id;
+            $this->request->data = $this->User->read();//đọc thông tin user với $id, gán vào request->data hiển thị view
+        }
+    }
+
+    public function admin_add(){
+        $this->set('title_for_layout', 'Add user');
+        if($this->request->is('post') || $this->request->is('put')){
+            $now = date('Y:m:h H:i:s');
+            $this->User->set(array('date_created' => $now));
+            $this->User->set(array('date_updated' => $now));
+            if($this->User->save($this->request->data)){
+                $this->Session->setFlash('Success','default',array('class'=>"alert alert-success"));
+                $this->redirect(array('action' => 'list'));
+            }
         }
     }
 }

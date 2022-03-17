@@ -31,7 +31,10 @@
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 	//Page admin
 	Router::connect('/admin', array('controller' => 'users', 'action' => 'login', 'admin' => true));
-
+	//Router::connect('/list-user', array('controller' => 'users', 'action' => 'admin_list', 'method' => 'GET'));
+	Router::connect('/add-user', array('controller' => 'users', 'action' => 'admin_add', 'method' => 'POST'));
+	Router::connect('/edit-user/:id', ['controller' => 'users', 'action' => 'admin_edit', '[method]' => ['POST']], ['pass' => ['id'], 'id' => '[0-9]+']);
+	Router::connect('/list-user', ['controller' => 'users', 'action' => 'admin_list', '[method]' => ['GET']], ['pass' => ['id'], 'id' => '[0-9]+']);
 
 /**
  * Load all plugin routes. See the CakePlugin documentation on

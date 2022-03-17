@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title><?php echo $title_for_layout; ?></title>
     <?php
         echo $this->Html->css(array(
             '../template_admin/vendor/bootstrap/css/bootstrap.min',
