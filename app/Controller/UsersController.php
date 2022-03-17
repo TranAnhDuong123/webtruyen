@@ -73,4 +73,7 @@ class UsersController extends AppController
             }
         }
     }
+     public function test(){
+         die('abc');
+     }
 }
