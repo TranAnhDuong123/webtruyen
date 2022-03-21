@@ -24,11 +24,40 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/View/Pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+	//Router::connect('/', array('controller' => 'pages', 'action' => 'display', 'home'));
+	Router::connect('/', array('controller' => 'pages', 'action' => 'index'));
 /**
  * ...and connect the rest of 'Pages' controller's URLs.
  */
 	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+
+	Router::connect(
+		'/the-loai/:id-:slug.html/*',
+		array('controller' => 'pages', 'action' => 'view_genre'),
+		array(
+			'pass' => array('id', 'slug'),
+			"id" => "[0-9]+",
+		)
+	);
+
+	Router::connect(
+		'/chi-tiet/:slug-:id.html',
+		array('controller' => 'pages', 'action' => 'detail_story'),
+		array(
+			'pass' => array('slug', 'id'),
+			"id"=>"[0-9]+", // chỉ là số
+		)
+	);
+
+	Router::connect(
+		'/:slug1/:slug2-:id.html',
+		array('controller' => 'pages', 'action' => 'detail_chap'),
+		array(
+			'pass' => array('slug1','slug2','id'),
+			"id"=>"[0-9]+", // chỉ là số
+		)
+	);
+
 	//Page admin
 	Router::connect('/admin', array('controller' => 'users', 'action' => 'login', 'admin' => true));
 	//Router::connect('/list-user', array('controller' => 'users', 'action' => 'admin_list', 'method' => 'GET'));

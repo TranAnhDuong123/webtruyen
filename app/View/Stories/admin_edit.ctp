@@ -46,7 +46,8 @@
                                             <span style="color:red;"><?php echo $error['upload'];?></span>
                                             <?php endif;?>
                                             <br>
-                                            <img src="/img/stories/<?php echo $detail['Story']['id'];?>.jpg" />
+                                            <?php $image_name =  $DataComponent->get_image(IMG_DIR . DS . STORIES_DIR . DS, $detail['Story']['id'].'.jpg');?>
+                                            <img src="<?php echo $image_name;?>" style="width: 200px;" />
                                         </div>
                                         <div class="form-group">
                                             <label>Description</label>

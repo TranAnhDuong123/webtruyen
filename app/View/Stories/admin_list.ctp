@@ -55,8 +55,9 @@ $(document).ready(function() {
                                     ?>
                                     <tr>
                                         <td>
+                                            <?php $image_name =  $DataComponent->get_image(IMG_DIR . DS . STORIES_DIR . DS, $val['Story']['id'].'.jpg');?>
                                             <?php
-                                            echo $this->Html->image('/img/stories/'.$val['Story']['id'].'.jpg', array('alt'=>$val['Story']['name'],'style'=>"width:100px;height:100px;"));
+                                            echo $this->Html->image($image_name, array('alt'=>$val['Story']['name'],'style'=>"width:100px;height:100px;"));
                                             ?>
                                         </td>
                                         <td><?php echo $val['Story']['name']?></td>

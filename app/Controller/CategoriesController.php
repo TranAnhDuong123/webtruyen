@@ -88,5 +88,20 @@ class CategoriesController extends AppController
             $this->set("error", $error);
         }
     }
+
+    //Font-end
+    public function menu(){
+        $result = $this->Category->find('all', array('fields' => array('id', 'name','parent_id'),'conditions'=>array(' parent_id=0'),'order'=>array('id'=>'asc'), 'recursive'=>-1));
+        return $result;
+    }
+    public function submenu($id){
+        $arrProducer = $this->Category->find('all', array(
+            'fields' => array('id', 'name', 'parent_id'),
+            'conditions' => array('parent_id = '.$id),
+            'order' => array('id' => 'asc'),
+            'recursive' => -1
+        ));
+        return $arrProducer;
+    }
 }
 ?>

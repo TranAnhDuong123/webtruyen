@@ -74,7 +74,7 @@ class StoriesController extends AppController{
                     if(!empty($fla)){
                         //Vì không lưu tên ảnh vào CSDL nên khi muốn lấy ra cần 1 chuẩn đó là chỉ một loại ảnh duy nhất(phần mở rộng) chỉ khác ở phần tên ảnh thui, ở đây mình chọn loại (.jpg)
                         $file_name = $this->Story->id.'.jpg';//đặt tên lại là id của dữ liệu vừa thêm vào
-                        move_uploaded_file($file['tmp_name'], WWW_ROOT . 'img/stories/' . $file_name);
+                        move_uploaded_file($file['tmp_name'], WWW_ROOT . IMG_DIR .DS . STORIES_DIR . DS . $file_name);
                     } 
                 }
                 $this->Session->setFlash('Success','default', array('class' => "alert alert-success"));
@@ -139,6 +139,25 @@ class StoriesController extends AppController{
             }
             $this->set("error", $error);//gửi thông báo lỗi qua view
         }
+    }
+
+    public function randomstory(){
+        $dataStoryRandom = $this->Story->find('all', array(
+            'conditions' => array('status=1'),
+            'order' => 'rand()',
+            'limit' => 8,
+            'recursive' => -1
+        ));
+        return $dataStoryRandom;
+    }
+    public function readbeststory(){
+        $dataStoryRandom = $this->Story->find('all', array(
+            'conditions' => array('status=1'),
+            'order' => array("view" => "desc"),
+            'limit' => 3,
+            'recursive' => -1
+        ));
+        return $dataStoryRandom;
     }
 }
 ?>

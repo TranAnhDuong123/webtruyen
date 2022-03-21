@@ -200,7 +200,8 @@
                 <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
-                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                <li>
+                    <?php echo $this->Html->link('<i class="fa fa-user fa-fw"></i> User Profile',array('admin'=>true,'controller'=>'users','action'=>'edit',$current_user['id']),array('escape'=>false));?>
                 </li>
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                 </li>
@@ -239,45 +240,54 @@
                             <a href="/admin/users/list">List</a>
                         </li>
                         <li>
-                            <!-- <a href="/admin/users/add">Add</a> -->
-                            <?php
-                                echo $this->Html->link('Add', array('controller' => 'users', 'action' => 'add'), array('escape' => false))
-                            ?>
+                            <?php echo $this->Html->link('Add',array('controller'=>'users','action'=>'add'),array('escape'=>false))?>
+                            <!--Or-->
+                            <!--<a href="/admin/users/add">Add</a>-->
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href=""><i class="fa fa-bar-chart-o fa-fw"></i>Category<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="/admin/categories/list">list</a>
+                            <a href="/admin/categories/list">List</a>
                         </li>
                         <li>
-                            <?php
-                                echo $this->Html->link('Add', array('controller' => 'categories', 'action' => 'add'), array('escape' => false)); 
-                            ?>
+                            <?php echo $this->Html->link('Add',array('controller'=>'categories','action'=>'add'),array('escape'=>false))?>
+                            <!--Or-->
+                            <!--<a href="/admin/users/add">Add</a>-->
                         </li>
                     </ul>
+                    <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href=""><i class="fa fa-book"></i>Story<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-book"></i> Story<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="/admin/stories/list">list</a>
+                            <a href="/admin/stories/list">List</a>
                         </li>
                         <li>
-                            <?php
-                                echo $this->Html->link('Add', array('controller' => 'stories', 'action' => 'add'), array('escape' => false));
-                            ?>
+                            <?php echo $this->Html->link('Add',array('controller'=>'stories','action'=>'add'),array('escape'=>false))?>
+                            <!--Or-->
+                            <!--<a href="/admin/users/add">Add</a>-->
                         </li>
                     </ul>
+                    <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                </li>
-                <li>
-                    <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                    <a href="#"><i class="fa fa-file-image-o"></i> Chapter<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="/admin/chapters/list">List</a>
+                        </li>
+                        <li>
+                            <?php echo $this->Html->link('Add',array('controller'=>'chapters','action'=>'add'),array('escape'=>false))?>
+                            <!--Or-->
+                            <!--<a href="/admin/users/add">Add</a>-->
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
                 </li>
             </ul>
         </div>
