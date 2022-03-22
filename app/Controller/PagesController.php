@@ -45,7 +45,7 @@ class PagesController extends AppController {
  *	or MissingViewException in debug mode.
  */
     public $layout = "story";
-    public $uses = array("Story","Category", "Chapter");
+    public $uses = array("Story","Category", "Chapter", "Slide");
     public $components = array('RequestHandler', 'Data');
     public $helpers = array('Js','Paginator','Html');
     var $paginate = array();
@@ -106,6 +106,14 @@ class PagesController extends AppController {
         );
         // pr($data);exit;
         $this->set('dataStoryView', $data);
+
+        // $dataSlide = $this->Slide->find('all', array(
+        //     'conditions'=>array('active=1'),
+        //     'order' => array('id' => 'desc'),
+        //     'limit'=>8,
+        //     'recursive'=>-1
+        // ));
+        // $this->set('dataSlide', $dataSlide);
 	}
 
 

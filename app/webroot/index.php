@@ -119,3 +119,4 @@ $Dispatcher->dispatch(
 	new CakeRequest(),
 	new CakeResponse()
 );
+define('SLIDE_DIR', 'slides');

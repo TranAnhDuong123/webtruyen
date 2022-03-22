@@ -1,20 +1,18 @@
+<?php if(!empty($dataSlide)):?>
 <section  class="homepage-slider" id="home-slider">
 	<div class="flexslider">
 		<ul class="slides">
-			<li>
-                <img src="../template_story/themes/images/carousel/banner-1.jpg" />
-			</li>
-			<li>
-                <img src="../template_story/themes/images/carousel/banner-2.jpg" />
-				<div class="intro">
-					<h1>Mid season sale</h1>
-					<p><span>Up to 50% Off</span></p>
-					<p><span>On selected items online and in stores</span></p>
-				</div>
-			</li>
+			<?php foreach ($dataSlide as $key => $value):?>
+				<li>
+                    <a href="<?php echo $value["Slide"]["link"]?>">
+                    	<?php echo  $this->Html->image(SLIDE_DIR . DS. $value['Slide']['id'].'.jpg', array('alt'=>$value['Slide']['link']));?>
+                    </a>
+				</li>
+			<?php endforeach;?>
 		</ul>
 	</div>			
 </section>
+<?php endif;?>
 <section class="header_text">
 	We stand for top quality templates. Our genuine developers always optimized bootstrap commercial templates. 
 	<br/>Don't miss to use our cheap abd best bootstrap templates.
@@ -38,7 +36,7 @@
 								<ul class="thumbnails">
 									<?php foreach ($dataStoryNewUpdate["item_active"] as $key => $value) { ?>
 										<li class="span3">
-										<div class="product-box">
+											<div class="product-box">
 												<span class="sale_tag"></span>
 												<p>
 													<?php $image_name =  $DataComponent->get_image(IMG_DIR . DS . STORIES_DIR . DS, $value['Story']['id'].'.jpg');?>
@@ -76,7 +74,7 @@
 								<ul class="thumbnails">
 								<?php foreach ($dataStoryNewUpdate["item"] as $key => $value) { ?>
 									<li class="span3">
-									<div class="product-box">
+										<div class="product-box">
 											<span class="sale_tag"></span>
 											<p>
 												<?php $image_name =  $DataComponent->get_image(IMG_DIR . DS . STORIES_DIR . DS, $value['Story']['id'].'.jpg');?>
@@ -131,7 +129,7 @@
 								<ul class="thumbnails">												
 									<?php foreach ($dataStoryView["item_active"] as $key => $value) { ?>
 										<li class="span3">
-										<div class="product-box">
+											<div class="product-box">
 												<span class="sale_tag"></span>
 												<p>
 													<?php $image_name =  $DataComponent->get_image(IMG_DIR . DS . STORIES_DIR . DS, $value['Story']['id'].'.jpg');?>
@@ -169,7 +167,7 @@
 								<ul class="thumbnails">
 									<?php foreach ($dataStoryView["item"] as $key => $value) { ?>
 									<li class="span3">
-									<div class="product-box">
+										<div class="product-box">
 											<span class="sale_tag"></span>
 											<p>
 												<?php $image_name =  $DataComponent->get_image(IMG_DIR . DS . STORIES_DIR . DS, $value['Story']['id'].'.jpg');?>
