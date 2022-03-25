@@ -21,6 +21,16 @@
             '../template_story/themes/js/superfish.js',
             '../template_story/themes/js/jquery.scrolltotop.js',
             '../template_story/themes/js/jquery.flexslider-min.js',
+            'FileUpload/js/vendor/jquery.ui.widget.js',
+            'FileUpload/js/tmpl.min.js',
+            'FileUpload/js/load-image.all.min.js',
+            'FileUpload/js/canvas-to-blob.min.js',
+            'FileUpload/js/jquery.iframe-transport.js',
+            'FileUpload/js/jquery.fileupload.js',
+            'FileUpload/js/jquery.fileupload-process.js',
+            'FileUpload/js/jquery.fileupload-image.js',
+            'FileUpload/js/jquery.fileupload-validate.js',
+            'FileUpload/js/jquery.fileupload-ui.js',
         ));
     ?>
     <script type="text/javascript">

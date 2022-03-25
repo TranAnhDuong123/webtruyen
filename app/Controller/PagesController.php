@@ -233,4 +233,46 @@ class PagesController extends AppController {
         $data['dataNeighbors'] = $neighbors;
         $this->set('data', $data);
     }
+
+    public function upload(){
+
+    }
+    public function fileupload(){
+        $this->layout = "ajax";
+        App::import("Vendor", "UploadHandler", array("file"=> "file.upload/UploadHandler.php"));
+        $options = array(
+            'script_url' => Router::url(),
+            'upload_dir' => IMG_DIR . DS . UPLOADS_DIR . DS,
+            'upload_url' => Router::url("/". IMG_DIR . DS . UPLOADS_DIR . DS, true),
+        );
+        $upload_handler = new UploadHandler($options);
+        switch ($_SERVER["REQUEST_METHOD"]) {
+            case 'GET':
+            case 'HEAD':
+                $upload_handler->get();
+                break;
+            case 'POST':
+                $upload_handler->post();
+                break;
+            case 'DELETE';
+                $upload_handler->delete();
+                break;
+            default:
+                $this->header('HTTP/1.1 405 Method Not Allowed');
+                break;
+        }
+        exit;
+    }
+    public function delete(){
+        $this->layout = "ajax";
+        $this->autoRender = false;
+        if($this->RequestHandler->isAjax()){
+            $filename = $this->request->query['file'];
+            @unlink(WWW_ROOT . IMG_DIR .DS . UPLOADS_DIR . DS .$filename);
+            @unlink(WWW_ROOT . IMG_DIR .DS . UPLOADS_DIR . DS ."thumbnail". DS .$filename);
+            $result = array("filename"=> $filename);
+            return json_encode($result);
+        }
+    }
+
 }

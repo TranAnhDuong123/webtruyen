@@ -112,6 +112,8 @@ if (!empty($failed)) {
 //Noi dung define
 define('IMG_DIR' , 'img');
 define('STORIES_DIR', 'stories');
+define('SLIDE_DIR', 'slides');
+define('UPLOADS_DIR', 'uploads');
 App::uses('Dispatcher', 'Routing');
 
 $Dispatcher = new Dispatcher();
